@@ -1,73 +1,573 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Ruhail Rana</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruhail Rana – Head of School (Digital)</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --navy-mid: #1A2E45;
+    --navy-light: #253F5A;
+    --electric: #00D4FF;
+    --electric-dim: #00A8CC;
+    --gold: #F5C842;
+    --offwhite: #F2EFE8;
+    --muted: #8FA3B1;
+    --card-bg: #162538;
+    --tag-bg: #1E3448;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--navy);
+    color: var(--offwhite);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 4rem;
+    border-bottom: 1px solid rgba(0,212,255,0.12);
+    position: sticky;
+    top: 0;
+    background: rgba(13,27,42,0.92);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+  }
+  .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--offwhite); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--electric); }
+
+  .hero {
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    padding: 5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(0,212,255,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-content { max-width: 760px; position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--electric); margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow::before { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--electric); }
+  h1 { font-family: 'DM Serif Display', serif; font-size: clamp(3.2rem, 6.5vw, 5.2rem); line-height: 1.05; font-weight: 400; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+  h1 em { font-style: italic; color: var(--electric); }
+  .hero-desc { font-size: 1.1rem; color: var(--muted); max-width: 580px; margin-bottom: 1.5rem; line-height: 1.8; }
+  .hero-stats { display: flex; gap: 2.5rem; margin-bottom: 2.5rem; padding: 1.5rem 0; border-top: 1px solid rgba(255,255,255,0.07); border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .hs-num { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--electric); line-height: 1; }
+  .hs-label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem; }
+  .hero-cta { display: inline-flex; align-items: center; gap: 0.75rem; background: var(--electric); color: var(--navy); padding: 0.85rem 2rem; border-radius: 4px; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.04em; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+  .hero-cta:hover { background: #33DDFF; transform: translateY(-2px); }
+  .hero-cta-ghost { display: inline-flex; align-items: center; gap: 0.75rem; border: 1px solid rgba(0,212,255,0.35); color: var(--electric); padding: 0.85rem 2rem; border-radius: 4px; font-weight: 500; font-size: 0.9rem; letter-spacing: 0.04em; text-decoration: none; margin-left: 1rem; transition: border-color 0.2s, background 0.2s; }
+  .hero-cta-ghost:hover { background: rgba(0,212,255,0.06); border-color: var(--electric); }
+
+  .section-divider { display: flex; align-items: center; gap: 1rem; padding: 0 4rem; margin-bottom: 3rem; }
+  .section-divider::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.07); }
+  .section-label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+
+  section { padding: 5rem 4rem; }
+  h2 { font-family: 'DM Serif Display', serif; font-size: 2.5rem; font-weight: 400; margin-bottom: 0.5rem; line-height: 1.15; }
+  h2 span { color: var(--electric); }
+  .section-sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 3rem; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: start; }
+  .about-text p { color: #B8C8D4; font-size: 1.02rem; line-height: 1.85; margin-bottom: 1.2rem; }
+  .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .tag { background: var(--tag-bg); border: 1px solid rgba(0,212,255,0.15); color: var(--electric-dim); padding: 0.35rem 0.85rem; border-radius: 20px; font-size: 0.82rem; }
+
+  /* ACHIEVEMENTS */
+  .achieve-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; }
+  .achieve-card { background: var(--card-bg); border: 1px solid rgba(0,212,255,0.1); border-radius: 8px; padding: 1.5rem; display: flex; gap: 1rem; transition: border-color 0.25s, transform 0.25s; }
+  .achieve-card:hover { border-color: rgba(0,212,255,0.3); transform: translateY(-2px); }
+  .achieve-tick { font-size: 1.2rem; color: var(--electric); flex-shrink: 0; margin-top: 0.1rem; }
+  .achieve-text { font-size: 0.88rem; color: #B0C4D2; line-height: 1.65; }
+
+  /* LEADERSHIP */
+  .leadership-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .leadership-card { background: var(--card-bg); border: 1px solid rgba(0,212,255,0.1); border-radius: 8px; padding: 1.75rem; transition: border-color 0.25s, transform 0.25s; }
+  .leadership-card:hover { border-color: rgba(0,212,255,0.3); transform: translateY(-3px); }
+  .lc-icon { width: 44px; height: 44px; background: rgba(0,212,255,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; font-size: 1.3rem; }
+  .lc-title { font-weight: 600; font-size: 1rem; color: var(--offwhite); margin-bottom: 0.5rem; }
+  .lc-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+  /* DIGITAL */
+  .digital-split { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .skill-group-title { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
+  .skill-bar-item { margin-bottom: 1.2rem; }
+  .skill-bar-label { display: flex; justify-content: space-between; font-size: 0.88rem; color: #B0C4D2; margin-bottom: 0.4rem; }
+  .skill-bar-track { height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
+  .skill-bar-fill { height: 100%; background: linear-gradient(90deg, var(--electric), var(--electric-dim)); border-radius: 2px; }
+
+  /* CAREER */
+  .career-timeline { position: relative; padding-left: 2rem; }
+  .career-timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: rgba(0,212,255,0.15); }
+  .career-item { position: relative; margin-bottom: 2.5rem; }
+  .career-item::before { content: ''; position: absolute; left: -2.375rem; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--electric); box-shadow: 0 0 0 3px rgba(0,212,255,0.15); }
+  .career-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.25rem; flex-wrap: wrap; gap: 0.5rem; }
+  .career-role { font-weight: 600; font-size: 1.05rem; color: var(--offwhite); }
+  .career-date { font-size: 0.8rem; color: var(--electric-dim); background: rgba(0,212,255,0.08); padding: 0.2rem 0.65rem; border-radius: 3px; white-space: nowrap; }
+  .career-org { font-size: 0.88rem; color: var(--gold); margin-bottom: 0.75rem; }
+  .career-bullets { list-style: none; padding: 0; }
+  .career-bullets li { font-size: 0.88rem; color: var(--muted); line-height: 1.65; padding-left: 1.1rem; position: relative; margin-bottom: 0.4rem; }
+  .career-bullets li::before { content: '—'; position: absolute; left: 0; color: rgba(0,212,255,0.4); }
+
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+  .project-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 2rem; display: flex; flex-direction: column; transition: border-color 0.25s, transform 0.25s; }
+  .project-card:hover { border-color: rgba(245,200,66,0.3); transform: translateY(-3px); }
+  .project-badge { display: inline-block; background: rgba(245,200,66,0.1); color: var(--gold); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 3px; margin-bottom: 1rem; align-self: flex-start; }
+  .project-title { font-family: 'DM Serif Display', serif; font-size: 1.3rem; font-weight: 400; color: var(--offwhite); margin-bottom: 0.75rem; }
+  .project-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.7; flex: 1; margin-bottom: 1.5rem; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .stack-pill { background: rgba(255,255,255,0.05); color: #7A9BAF; font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 3px; }
+
+  /* EDUCATION */
+  .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+  .edu-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 1.5rem; }
+  .edu-qual { font-weight: 600; font-size: 0.95rem; color: var(--offwhite); margin-bottom: 0.3rem; }
+  .edu-inst { font-size: 0.85rem; color: var(--muted); }
+  .edu-year { font-size: 0.78rem; color: var(--electric-dim); margin-top: 0.5rem; }
+
+  /* CONTACT */
+  .contact-inner { background: var(--card-bg); border: 1px solid rgba(0,212,255,0.12); border-radius: 12px; padding: 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .contact-text h2 { margin-bottom: 1rem; }
+  .contact-text p { color: var(--muted); font-size: 0.95rem; line-height: 1.8; }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; text-decoration: none; color: var(--offwhite); font-size: 0.9rem; transition: border-color 0.2s, background 0.2s; }
+  .contact-link:hover { border-color: rgba(0,212,255,0.3); background: rgba(0,212,255,0.04); }
+  .contact-link-icon { width: 36px; height: 36px; background: rgba(0,212,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .contact-link-label { font-size: 0.75rem; color: var(--muted); }
+  .contact-link-val { font-weight: 500; font-size: 0.9rem; }
+
+  footer { text-align: center; padding: 2rem 4rem; border-top: 1px solid rgba(255,255,255,0.06); color: rgba(143,163,177,0.5); font-size: 0.8rem; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero, section { padding: 3rem 1.5rem; }
+    .about-grid, .digital-split, .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .contact-inner { padding: 2rem; }
+    .section-divider { padding: 0 1.5rem; }
+    .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+  }
+</style>
 </head>
+<body>
 
-<body bgcolor="lightgrey">
+<nav>
+  <div class="nav-logo">Ruhail Rana</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#leadership">Leadership</a></li>
+    <li><a href="#digital">Digital</a></li>
+    <li><a href="#career">Career</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-<font face="Arial" size="7" color="darkblue"><b>Ruhail Rana</b></font><br>
-<font face="Arial" size="4"><i>Head of School – Digital | Cloud & AI Enthusiast</i></font>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Head of School – Digital &amp; Computing · South &amp; City College Birmingham</div>
+    <h1>Ruhail<br><em>Rana</em></h1>
+    <p class="hero-desc">Senior leader with 20+ years of experience across education and the charity sector — designing programmes that achieve measurable outcomes, leading high-performing teams, and driving digital transformation at scale.</p>
+    <div class="hero-stats">
+      <div><div class="hs-num">20+</div><div class="hs-label">Years Leadership</div></div>
+      <div><div class="hs-num">£1.4M</div><div class="hs-label">Budget Managed</div></div>
+      <div><div class="hs-num">400+</div><div class="hs-label">Homelessness Ended</div></div>
+    </div>
+    <a href="#achievements" class="hero-cta">Key Achievements →</a>
+    <a href="#contact" class="hero-cta-ghost">Get in Touch</a>
+  </div>
+</section>
 
-<hr>
+<!-- ABOUT -->
+<div class="section-divider"><span class="section-label">About</span></div>
+<section id="about">
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <h2>Education leader. <span>Digital innovator.</span></h2>
+      <p class="section-sub">Wolverhampton, West Midlands · ruhailr@yahoo.co.uk · 07990 510673</p>
+      <p>I'm a senior leader with over 20 years of experience across the charity and education sectors, with a strong track record of designing, leading, and scaling programmes that achieve measurable outcomes for vulnerable people.</p>
+      <p>As former Skylight Director at Crisis — one of the UK's leading homelessness charities — I managed a £1.4 million annual budget and contributed to ending homelessness for over 400 individuals. I am equally experienced in further education leadership, curriculum strategy, and quality assurance across multi-campus environments.</p>
+      <p>I am committed to trauma-informed, evidence-led practice and to building organisations and programmes that create lasting impact.</p>
+    </div>
+    <div>
+      <div class="tag-cloud">
+        <span class="tag">Strategic Leadership</span>
+        <span class="tag">Programme Design</span>
+        <span class="tag">Budget Management</span>
+        <span class="tag">Multi-site Teams</span>
+        <span class="tag">Stakeholder Engagement</span>
+        <span class="tag">Quality Assurance</span>
+        <span class="tag">Safeguarding &amp; DSL</span>
+        <span class="tag">Trauma-Informed Practice</span>
+        <span class="tag">Lived Experience Co-production</span>
+        <span class="tag">Curriculum Design</span>
+        <span class="tag">Digital &amp; E-learning</span>
+        <span class="tag">Evidence-Led Improvement</span>
+        <span class="tag">AWS Cloud</span>
+        <span class="tag">AI in Education</span>
+        <span class="tag">Change Management</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-<font face="Arial" size="5" color="darkred"><b>About Me</b></font>
+<!-- ACHIEVEMENTS -->
+<div class="section-divider"><span class="section-label">Achievements</span></div>
+<section id="achievements">
+  <h2>Key <span>Achievements</span></h2>
+  <p class="section-sub">A career defined by measurable outcomes and transformational impact</p>
+  <div class="achieve-grid reveal">
+    <div class="achieve-card">
+      <div class="achieve-tick">✓</div>
+      <div class="achieve-text">Managed a £1.4 million annual budget as Skylight Director at Crisis, delivering services across Birmingham and Coventry and contributing to ending homelessness for over 400 individuals over three years.</div>
+    </div>
+    <div class="achieve-card">
+      <div class="achieve-tick">✓</div>
+      <div class="achieve-text">Led the Homeless Health Peer Advocacy programme — recruiting, training, and employing people with lived experience of homelessness as Peer Advocates, embedding co-production at the heart of delivery.</div>
+    </div>
+    <div class="achieve-card">
+      <div class="achieve-tick">✓</div>
+      <div class="achieve-text">Led the national rollout of Google Classroom across 11 Crisis centres during COVID — developing training frameworks, workflow standards, and digital inclusion processes from scratch across a dispersed workforce.</div>
+    </div>
+    <div class="achieve-card">
+      <div class="achieve-tick">✓</div>
+      <div class="achieve-text">Transformed under-attended tenancy support sessions into inclusive breakfast events, achieving an 85% increase in attendance and improved tenancy sustainment outcomes.</div>
+    </div>
+    <div class="achieve-card">
+      <div class="achieve-tick">✓</div>
+      <div class="achieve-text">Improved ICT curriculum success rates over three consecutive years across four campuses, managing 19 staff including visiting lecturers and assessors.</div>
+    </div>
+    <div class="achieve-card">
+      <div class="achieve-tick">✓</div>
+      <div class="achieve-text">Contributed to Crisis's national Senior Leadership Group, supporting quality and consistency across the wider organisation at a national level.</div>
+    </div>
+  </div>
+</section>
 
-<p>
-<font face="Arial" size="3">
-I am a digital education leader with experience in Further Education and the charity sector.
-I specialise in digital learning, AI technologies, and cloud computing.
-</font>
-</p>
+<!-- LEADERSHIP -->
+<div class="section-divider"><span class="section-label">Leadership</span></div>
+<section id="leadership">
+  <h2>Professional <span>Leadership</span></h2>
+  <p class="section-sub">Strategic capabilities built across two decades in education and the third sector</p>
+  <div class="leadership-grid reveal">
+    <div class="leadership-card">
+      <div class="lc-icon">🎯</div>
+      <div class="lc-title">Strategic Vision &amp; Planning</div>
+      <div class="lc-desc">Translating organisational strategy into well-defined programme plans with clear KPIs, success measures, and accountability structures — across FE, homelessness services, and national charity operations.</div>
+    </div>
+    <div class="leadership-card">
+      <div class="lc-icon">👥</div>
+      <div class="lc-title">Multi-site Team Leadership</div>
+      <div class="lc-desc">Led teams of up to 20 staff across Birmingham. Built high-performance, trauma-informed cultures focused on continuous improvement and staff wellbeing.</div>
+    </div>
+    <div class="leadership-card">
+      <div class="lc-icon">📋</div>
+      <div class="lc-title">Curriculum &amp; Programme Design</div>
+      <div class="lc-desc">Designed and governed curricula from digital skills and ICT to wellbeing and peer advocacy — ensuring rigour, inclusivity, and alignment with awarding body standards and learner need.</div>
+    </div>
+    <div class="leadership-card">
+      <div class="lc-icon">💰</div>
+      <div class="lc-title">Budget &amp; Resource Management</div>
+      <div class="lc-desc">Held full P&L responsibility for a £1.4 million annual budget, making strategic resource allocation decisions and delivering against commissioner and funder expectations.</div>
+    </div>
+    <div class="leadership-card">
+      <div class="lc-icon">🤝</div>
+      <div class="lc-title">Partnership &amp; Stakeholder Working</div>
+      <div class="lc-desc">Built productive relationships with employers, commissioners, awarding bodies, local authorities, and community partners — including WMCA, and national Crisis leadership.</div>
+    </div>
+  </div>
+</section>
 
-<hr>
+<!-- DIGITAL -->
+<div class="section-divider"><span class="section-label">Digital</span></div>
+<section id="digital">
+  <h2><span>Digital</span> Expertise</h2>
+  <p class="section-sub">Technical depth built in practice — from VLE administration to AWS cloud and generative AI</p>
+  <div class="digital-split reveal">
+    <div>
+      <div class="skill-group-title">Technical Proficiency</div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>AWS Cloud (CCP &amp; SAA-C03 in progress)</span><span>75%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Generative AI &amp; Prompt Engineering</span><span>90%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>VLE Administration (Moodle, Google Classroom)</span><span>95%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:95%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>HTML, CSS &amp; JavaScript</span><span>80%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>CMS &amp; Digital Content (Umbraco)</span><span>70%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>E-learning Design &amp; ILT Tools</span><span>90%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">Areas of Interest</div>
+      <div class="tag-cloud">
+        <span class="tag">Large Language Models</span>
+        <span class="tag">AI Ethics &amp; Governance</span>
+        <span class="tag">Cloud Architecture</span>
+        <span class="tag">Data Pipelines (S3 / Glue / Athena)</span>
+        <span class="tag">Digital Inclusion</span>
+        <span class="tag">AI in FE &amp; Skills</span>
+        <span class="tag">Retrieval-Augmented Generation</span>
+        <span class="tag">Digital Health</span>
+        <span class="tag">Agentic AI</span>
+        <span class="tag">Serverless Functions</span>
+        <span class="tag">Open Source LLMs</span>
+        <span class="tag">AI Safety</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-<font face="Arial" size="5" color="darkred"><b>Skills</b></font>
+<!-- CAREER -->
+<div class="section-divider"><span class="section-label">Career</span></div>
+<section id="career">
+  <h2>Career <span>History</span></h2>
+  <p class="section-sub">Over two decades of progressive leadership across education and the charity sector</p>
+  <div class="career-timeline reveal">
 
-<ul>
-<li><font face="Arial" size="3">AWS Cloud</font></li>
-<li><font face="Arial" size="3">AI and Machine Learning</font></li>
-<li><font face="Arial" size="3">Digital Education Leadership</font></li>
-<li><font face="Arial" size="3">Curriculum Development</font></li>
-<li><font face="Arial" size="3">HTML and JavaScript</font></li>
-</ul>
+    <div class="career-item">
+      <div class="career-header">
+        <div class="career-role">Head of School – Digital and Computing</div>
+        <div class="career-date">Sept 2024 – Present</div>
+      </div>
+      <div class="career-org">South &amp; City College Birmingham</div>
+      <ul class="career-bullets">
+        <li>Lead digital and computing curriculum across multiple campuses — AI, cloud computing, cybersecurity, and BTEC programmes.</li>
+        <li>Manage academic staff with responsibility for professional development, performance management, and continuous improvement.</li>
+        <li>Oversee WMCA-funded digital skills provision and manage external quality assurance relationships.</li>
+        <li>Act as Designated Safeguarding Lead; embed trauma-informed practice throughout all programme design.</li>
+        <li>Deliver taster sessions into local schools, introducing web design, programming, and digital tools to groups of up to 30 pupils.</li>
+      </ul>
+    </div>
 
-<hr>
+    <div class="career-item">
+      <div class="career-header">
+        <div class="career-role">Skylight Director</div>
+        <div class="career-date">Nov 2020 – Aug 2024</div>
+      </div>
+      <div class="career-org">Crisis Skylight – Coventry &amp; Birmingham</div>
+      <ul class="career-bullets">
+        <li>Full strategic and operational responsibility for service delivery, safeguarding, quality assurance, and a £1.4 million budget across a multi-disciplinary team.</li>
+        <li>Designed and led the Homeless Health Peer Advocacy (HHPA) programme, embedding lived experience co-production at its heart.</li>
+        <li>Introduced digital health tools enabling people experiencing homelessness to independently access GP services and health records.</li>
+        <li>Led national rollout of Google Classroom across 11 Crisis centres during COVID, building training and digital inclusion frameworks from scratch.</li>
+        <li>Contributed to Crisis's national Senior Leadership Group.</li>
+      </ul>
+    </div>
 
-<font face="Arial" size="5" color="darkred"><b>Projects</b></font>
+    <div class="career-item">
+      <div class="career-header">
+        <div class="career-role">Digital Product Developer (Secondment)</div>
+        <div class="career-date">Oct 2023 – Feb 2024</div>
+      </div>
+      <div class="career-org">Crisis – Digital and Data Team</div>
+      <ul class="career-bullets">
+        <li>Developed digital content using Umbraco CMS; contributed to content audits and accessibility improvements across the national Crisis website.</li>
+      </ul>
+    </div>
 
-<br><br>
+    <div class="career-item">
+      <div class="career-header">
+        <div class="career-role">Operations Learning Manager</div>
+        <div class="career-date">Aug 2015 – Nov 2020</div>
+      </div>
+      <div class="career-org">Crisis Skylight Birmingham</div>
+      <ul class="career-bullets">
+        <li>Designed and delivered education programmes for adults with complex needs — self-esteem, resilience, digital skills, financial literacy.</li>
+        <li>Partnered with St Basils to co-design programmes for young people aged 18–25 facing homelessness.</li>
+        <li>Introduced Moodle as a VLE across two centres; acted as site administrator and led staff training.</li>
+      </ul>
+    </div>
 
-<font face="Arial" size="4"><b>AWS Data Lake</b></font>
+    <div class="career-item">
+      <div class="career-header">
+        <div class="career-role">Assistant Director – ICT</div>
+        <div class="career-date">Aug 2012 – Jul 2015</div>
+      </div>
+      <div class="career-org">South &amp; City College Birmingham</div>
+      <ul class="career-bullets">
+        <li>Led the ICT curriculum across four campuses; managed 19 staff and improved success rates over three consecutive years.</li>
+        <li>Developed bespoke IT training for local employers; acted as Lead Internal Verifier for Edexcel and City &amp; Guilds programmes.</li>
+      </ul>
+    </div>
 
-<p>
-<font face="Arial" size="3">
-Built a simple data pipeline using S3, Glue and Athena.
-</font>
-</p>
+    <div class="career-item">
+      <div class="career-header">
+        <div class="career-role">Earlier Roles</div>
+        <div class="career-date">1999 – 2012</div>
+      </div>
+      <div class="career-org">City College Birmingham · University of Birmingham</div>
+      <ul class="career-bullets">
+        <li>Curriculum Operations Manager – IT; Skills for Life Manager; E-learning Co-ordinator; IT Lecturer; Course Team Leader.</li>
+        <li>Advanced Practitioner in E-Learning: trained staff, led Ofsted prep, designed online Skills for Life courses in Literacy and Numeracy.</li>
+        <li>Assistant Computer Officer, University of Birmingham Mathematics &amp; Statistics — trained academic staff in WebCT and developed the department's early web presence.</li>
+      </ul>
+    </div>
 
-<font face="Arial" size="4"><b>AI in Education</b></font>
+  </div>
+</section>
 
-<p>
-<font face="Arial" size="3">
-Exploring how generative AI tools can support teaching and learning.
-</font>
-</p>
+<!-- PROJECTS -->
+<div class="section-divider"><span class="section-label">Projects</span></div>
+<section id="projects">
+  <h2>Selected <span>Projects</span></h2>
+  <p class="section-sub">Practical work at the intersection of technology, education, and social impact</p>
+  <div class="projects-grid reveal">
+    <div class="project-card">
+      <span class="project-badge">Cloud &amp; Data</span>
+      <div class="project-title">AWS Data Lake Pipeline</div>
+      <p class="project-desc">Built a functional data pipeline using core AWS services — ingesting raw data into S3, transforming it with AWS Glue, and making it queryable via Amazon Athena. Practical preparation for AWS Solutions Architect certification.</p>
+      <div class="project-stack">
+        <span class="stack-pill">Amazon S3</span>
+        <span class="stack-pill">AWS Glue</span>
+        <span class="stack-pill">Amazon Athena</span>
+        <span class="stack-pill">IAM</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <span class="project-badge">AI in Education</span>
+      <div class="project-title">Generative AI for Teaching &amp; Learning</div>
+      <p class="project-desc">Practitioner research exploring how generative AI tools can meaningfully support differentiated teaching, formative assessment design, and learner feedback at scale across FE programmes.</p>
+      <div class="project-stack">
+        <span class="stack-pill">Prompt Engineering</span>
+        <span class="stack-pill">LLMs</span>
+        <span class="stack-pill">LMS Integration</span>
+        <span class="stack-pill">EdTech Research</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <span class="project-badge">Digital Inclusion</span>
+      <div class="project-title">Google Classroom National Rollout</div>
+      <p class="project-desc">Led the national deployment of Google Classroom across 11 Crisis centres during COVID — building training materials, workflow standards, and digital inclusion frameworks for a dispersed remote workforce from scratch.</p>
+      <div class="project-stack">
+        <span class="stack-pill">Google Classroom</span>
+        <span class="stack-pill">Change Management</span>
+        <span class="stack-pill">Digital Inclusion</span>
+        <span class="stack-pill">Staff Training</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-<hr>
+<!-- EDUCATION -->
+<div class="section-divider"><span class="section-label">Education</span></div>
+<section id="education">
+  <h2>Education &amp; <span>Qualifications</span></h2>
+  <p class="section-sub">Academic foundations and professional credentials</p>
+  <div class="edu-grid reveal">
+    <div class="edu-card">
+      <div class="edu-qual">MBA – Master of Business Administration</div>
+      <div class="edu-inst">University of Wolverhampton</div>
+      <div class="edu-year">1997</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-qual">BA (Hons) Business Studies – 2:1</div>
+      <div class="edu-inst">University of Wolverhampton</div>
+      <div class="edu-year">1994</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-qual">Certificate in Education (Cert Ed)</div>
+      <div class="edu-inst">City College Birmingham</div>
+      <div class="edu-year">2004</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-qual">Designated Safeguarding Lead (DSL)</div>
+      <div class="edu-inst">Completed across FE and third sector roles</div>
+      <div class="edu-year">Ongoing</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-qual">AWS Cloud Practitioner (CCP)</div>
+      <div class="edu-inst">Amazon Web Services</div>
+      <div class="edu-year">In Progress</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-qual">AWS Solutions Architect Associate (SAA-C03)</div>
+      <div class="edu-inst">Amazon Web Services</div>
+      <div class="edu-year">In Progress</div>
+    </div>
+  </div>
+</section>
 
-<font face="Arial" size="5" color="darkred"><b>Contact</b></font>
+<!-- CONTACT -->
+<div class="section-divider"><span class="section-label">Contact</span></div>
+<section id="contact">
+  <div class="contact-inner reveal">
+    <div class="contact-text">
+      <h2>Let's <span>connect</span></h2>
+      <p>I'm open to conversations about digital education leadership, AI strategy in FE, cloud curriculum design, or collaborative research. Based in Wolverhampton, West Midlands.</p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:ruhailr@yahoo.co.uk" class="contact-link">
+        <div class="contact-link-icon">✉</div>
+        <div>
+          <div class="contact-link-label">Email</div>
+          <div class="contact-link-val">ruhailr@yahoo.co.uk</div>
+        </div>
+      </a>
+      <a href="tel:07990510673" class="contact-link">
+        <div class="contact-link-icon">📞</div>
+        <div>
+          <div class="contact-link-label">Phone</div>
+          <div class="contact-link-val">07990 510673</div>
+        </div>
+      </a>
+      <a href="https://github.com/RuiRana" class="contact-link" target="_blank" rel="noopener">
+        <div class="contact-link-icon">⌥</div>
+        <div>
+          <div class="contact-link-label">GitHub</div>
+          <div class="contact-link-val">github.com/RuiRana</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
-<p>
-<font face="Arial" size="3">
-Email: your@email.com <br>
-GitHub: github.com/RuiRana
-</font>
-</p>
+<footer>
+  <p>© 2026 Ruhail Rana · Head of School – Digital &amp; Computing · South &amp; City College Birmingham</p>
+</footer>
 
-<hr>
-
-<font face="Arial" size="2">© 2026 Ruhail Rana</font>
-
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
