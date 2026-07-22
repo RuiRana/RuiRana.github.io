@@ -218,6 +218,18 @@ nav ul li a:hover{
     padding-left:20px;
 }
 
+.badge-progress{
+    display:inline-block;
+    font-size:11px;
+    font-weight:bold;
+    color:#1d4ed8;
+    background:#dbeafe;
+    padding:2px 8px;
+    border-radius:10px;
+    margin-left:8px;
+    vertical-align:middle;
+}
+
 /* PROJECTS */
 
 .projects{
@@ -245,6 +257,25 @@ nav ul li a:hover{
 .project-card h3{
     margin-bottom:15px;
     color:#0f172a;
+}
+
+.status-tag{
+    display:inline-block;
+    font-size:12px;
+    font-weight:bold;
+    padding:3px 10px;
+    border-radius:10px;
+    margin-bottom:12px;
+}
+
+.status-live{
+    background:#dcfce7;
+    color:#15803d;
+}
+
+.status-progress{
+    background:#fef3c7;
+    color:#b45309;
 }
 
 /* EXPERIENCE */
@@ -371,13 +402,14 @@ footer{
 
 <div class="hero-content">
 
-<h1>Digital Leadership <br> AI & Cloud Innovation</h1>
+<h1>Digital Leadership <br> Cloud, AI & Social Impact</h1>
 
 <h2>Ruhail Rana</h2>
 
 <p>
-Head of School – Digital & Computing with over 20 years of leadership
-experience across Further Education and the charity sector, digital transformation, cloud technologies,
+Head of School – Digital & Computing with 25+ years' cross-sector experience
+across Further Education and the charity sector, including 15+ years in
+senior leadership, specialising in digital transformation, cloud technologies,
 AI innovation, and programme development.
 </p>
 
@@ -416,10 +448,12 @@ Senior digital education leader focused on technology, innovation, and impact.
 <br>
 
 <p>
-Head of School – Digital & Computing with over 20 years of leadership
-experience across the education and charity sectors, specialising in
-digital transformation, cloud technologies, AI innovation,
-strategic programme delivery, and technology-enabled learning.
+Head of School – Digital & Computing with over 25 years' cross-sector
+experience across further education, the charity sector, and digital
+delivery, including 15+ years in senior leadership roles, progressing
+from manager to director. Former Skylight Director at Crisis, one of
+the UK's leading homelessness charities, holding full strategic and
+operational responsibility for services across Birmingham and Coventry.
 </p>
 
 <br>
@@ -427,7 +461,9 @@ strategic programme delivery, and technology-enabled learning.
 <p>
 My work combines leadership, technology, and inclusion —
 helping organisations improve outcomes through innovation,
-digital learning, and evidence-led practice.
+digital learning, and evidence-led practice. I'm currently building on this
+with hands-on AWS cloud and machine learning projects, working towards
+the AWS Certified Cloud Practitioner certification.
 </p>
 
 </div>
@@ -456,22 +492,23 @@ digital learning, and evidence-led practice.
 <div class="stats">
 
 <div class="stat-box">
-<h3>20+</h3>
-<p>Years Leadership Experience</p>
+<h3>25+</h3>
+<p>Years Cross-Sector Experience</p>
 </div>
 
 <div class="stat-box">
 <h3>£1.4M</h3>
-<p>Budget Managed</p>
-</div>
-<div class="stat-box">
-<h3>20</h3>
-<p>Staff Led Across 5 Campuses</p>
+<p>Annual Budget Managed</p>
 </div>
 
 <div class="stat-box">
-<h3>11</h3>
-<p>Crisis Centres Supported Nationally using VLE</p>
+<h3>1,400+</h3>
+<p>People Supported Across Homelessness Services</p>
+</div>
+
+<div class="stat-box">
+<h3>400+</h3>
+<p>People Helped to End Homelessness (3 Years)</p>
 </div>
 
 
@@ -500,7 +537,8 @@ Leadership, technology, cloud computing, and digital innovation.
 <h3>Cloud & AI</h3>
 
 <ul>
-<li>AWS Cloud</li>
+<li>AWS: S3, Lambda, Rekognition, IAM, RDS, EC2</li>
+<li>AWS Certified Cloud Practitioner <span class="badge-progress">In Progress</span></li>
 <li>Machine Learning</li>
 <li>AI in Education</li>
 <li>Data Analytics</li>
@@ -531,6 +569,7 @@ Leadership, technology, cloud computing, and digital innovation.
 
 <ul>
 <li>HTML / CSS / JavaScript</li>
+<li>Python</li>
 <li>Streamlit</li>
 <li>GitHub</li>
 <li>Moodle & VLE Systems</li>
@@ -564,28 +603,16 @@ Technology, AI, cloud computing, and digital innovation projects.
 
 <div class="project-content">
 
+<span class="status-tag status-live">Live</span>
+
 <h3>Student Risk Prediction System</h3>
 
 <p>
 Built a machine learning application using Streamlit and Python
 to identify students at risk based on attendance,
-engagement, and academic performance data.
-</p>
-
-</div>
-
-</div>
-
-<div class="project-card">
-
-<div class="project-content">
-
-<h3>AWS Data Lake Project</h3>
-
-<p>
-Designed a cloud-based data pipeline using Amazon S3,
-AWS Glue, and Athena to support scalable data analysis
-and reporting workflows.
+engagement, and academic performance data — drawing directly on
+15+ years of experience in education leadership to shape what the
+model needed to predict and why.
 </p>
 
 </div>
@@ -599,9 +626,11 @@ and reporting workflows.
 <h3>AI in Education</h3>
 
 <p>
-Exploring how generative AI technologies can support
-teaching, assessment, personalised learning,
-and learner engagement across Further Education.
+Championing responsible AI integration in teaching and learning at
+South & City College Birmingham, introducing tools including ChatGPT,
+Copilot and Gemini, and exploring how generative AI can support
+assessment, personalised learning, and learner engagement across
+Further Education.
 </p>
 
 </div>
@@ -612,14 +641,14 @@ and learner engagement across Further Education.
 
 <div class="project-content">
 
-<h3>National Google Classroom Rollout</h3>
+<span class="status-tag status-progress">In Development</span>
 
-
+<h3>AWS Data Lake Project</h3>
 
 <p>
-Led the implementation of Google Classroom across
-11 Crisis centres during COVID, developing digital
-training frameworks and remote learning standards.
+Designing a cloud-based data pipeline using Amazon S3,
+AWS Glue, and Athena to support scalable data analysis
+and reporting workflows.
 </p>
 
 </div>
@@ -630,18 +659,39 @@ training frameworks and remote learning standards.
 
 <div class="project-content">
 
-<h3>Homeless Health Peer Advocacy Programme</h3>
+<h3>National Google Classroom Rollout (COVID-19)</h3>
 
 <p>
-Led a city-wide programme recruiting and training
-people with lived experience of homelessness to support others
-in accessing healthcare, wellbeing services, and community support.
+Led the national rollout of Google Classroom across 11 Crisis centres
+during COVID-19, building training frameworks, workflow standards and
+digital inclusion processes from scratch to keep learning delivery
+running through a fully remote, dispersed workforce. Personally trained
+centres with no prior VLE experience, leaving a repeatable digital
+inclusion framework in place after the rollout.
 </p>
 
 </div>
 
-</div>  
+</div>
 
+<div class="project-card">
+
+<div class="project-content">
+
+<h3>Partnership Programme</h3>
+
+<p>
+Co-designed and delivered programmes in partnership with other
+charities for young people aged 18–25 facing homelessness, covering
+self-esteem, financial literacy and independent-living skills.
+Participants built the confidence and practical capability to move
+toward independent accommodation, with the programme piloted and
+refined using participant feedback.
+</p>
+
+</div>
+
+</div>
 
 <div class="project-card">
 
@@ -650,14 +700,35 @@ in accessing healthcare, wellbeing services, and community support.
 <h3>Digital Inclusion & Health Access</h3>
 
 <p>
-Introduced digital health solutions enabling people experiencing
-homelessness to independently access GP services, prescriptions,
-and online healthcare systems for the first time.
+Introduced digital health tools (myGP, Patient Access) to people
+experiencing homelessness, enabling independent access to GP services,
+prescriptions and health records for the first time.
 </p>
 
 </div>
 
-</div>  
+</div>
+
+<div class="project-card">
+
+<div class="project-content">
+
+<h3>Tenancy Support Redesign</h3>
+
+<p>
+Redesigned under-attended tenancy support sessions into inclusive
+breakfast events built around member needs, achieving an 85% increase
+in attendance and improved tenancy sustainment outcomes.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
 <!-- EXPERIENCE -->
@@ -738,7 +809,7 @@ or collaboration opportunities?
 </p>
 
 <p>
-📧 ruhailr@yahoo.co.uk
+📧 <a href="mailto:ruhailr@yahoo.co.uk">ruhailr@yahoo.co.uk</a>
 </p>
 
 <p>
@@ -751,8 +822,9 @@ or collaboration opportunities?
 GitHub
 </a>
 
-<a href="https://www.linkedin.com/in/ruhailrana/ target="_blank">
-LinkedIn </a>
+<a href="https://www.linkedin.com/in/ruhailrana/" target="_blank">
+LinkedIn
+</a>
 
 </div>
 
@@ -773,3 +845,4 @@ LinkedIn </a>
 </body>
 
 </html>
+
